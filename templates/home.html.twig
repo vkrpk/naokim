@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
+{% block body %}
+	{% set sidePictures = ['https://picsum.photos/id/47/420/221', 'https://picsum.photos/id/62/420/221'] %}
+	<div class="mb-3">
+		{{ include('shared/_mainCarousel.html.twig', {items: pictures, name: 'mainCarousel', height:400}) }}
+	</div>
+	<div class="row">
+		<div class="col-8">
+			<img src="https://picsum.photos/seed/picsum/856/450" class="img-fluid" alt="picture" style="height:450px;">
+		</div>
+		<div class="col-4 d-flex flex-column justify-content-between">
+			{% for picture in sidePictures %}
+				<img src="{{picture}}" class="img-fluid" alt="image" style="height:219px; width: 100%;">
+			{% endfor %}
+		</div>
+	</div>
+	<div>
+		{{ include('shared/_carousel.html.twig', {title: 'Services', entity: services, id: 'servicesCarousel'}) }}
+		{{ include('shared/_carousel.html.twig', {title: 'Produits', entity: products, id: 'productsCarousel'}) }}
+	</div>
+{% endblock %}

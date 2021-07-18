@@ -1,0 +1,101 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+
+	{{ parent() }}
+
+	{{ encore_entry_link_tags('filter') }}
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+	{{ parent() }}
+
+	{{ encore_entry_script_tags('filter') }}
+
+{% endblock %}
+
+
+{% block title %}
+	Les produits
+{% endblock %}
+
+{% block body %}
+
+	{# <h3>Les produits</h3> #}
+
+	<div class="row">
+
+			<style>
+				.accordion{
+					width: 200px;
+					margin: 30px 0 0 100px;
+				}
+
+				.accordion-button{
+					color: black;
+				}
+
+				input[type="range"] {
+					width: 150px;
+					margin: 10px auto;
+				}
+				
+			</style>
+
+			<div class="col-3">
+				<h3 style="margin: 100px 0 0 100px;">Trier par :</h3>
+				<div class="accordion color-dark" id="accordionExample">
+					<div class="accordion-item">
+					    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Prix (&euro;)</button>
+					  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+					    <div class="accordion-body">
+					     	<input type="range" name="prix" min="10" max="300" value="100">
+					    </div>
+					  </div>
+					</div>
+					<div class="accordion-item">
+					    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Marques</button>
+					  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+					    <div class="accordion-body">
+					      
+					    </div>
+					  </div>
+					</div>
+					<div class="accordion-item">
+					    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Catégories</button>
+					  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+					    <div class="accordion-body">
+					      
+					    </div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-9 d-block ">
+				<h3 style="margin: 100px;">Nouveaux produits</h3>
+				{% for product in products %}
+				<div class="card position-relative border-0 px-auto" style="width: 25rem; float: left; margin: 0 20px 20px 0;">
+					<img src="{{product.mainpicture}}" style="border-radius: 25%; width: 18rem; margin: 0 auto;" class="card-img-top" alt="Image du produit">
+					<div class="card-body text-justify d-block mx-5" tyle="width: 18rem;">
+						<a class="h5" style="white-space: nowrap;" href="{{path('product_show', {'category_slug': product.category.slug, 'slug': product.slug})}}">{{product.name}}</a>
+						<div class="btn-group btn-group-toggle btn-color-group d-block mt-n2 ml-n22">
+							{% for color in colors %}
+								<span class="btn rounded-circle p-2 me-2 my-2 bg-{{color}} {{color == 'white'? 'rounded-circle border-gray'}}"></span>
+							{% endfor %}
+						</div>
+						<p class="card-text mb-3" style="overflow: hidden; height: 5rem;">{{product.description|u.truncate(100, '...')}}</p>
+						<p class="fw-bold mb-0">{{product.price / 100}}&euro;</p>
+						<p>
+							<em>
+								<a href="{{path('product_category_show', {'slug': product.category.slug})}}">{{product.category.name}}</a>
+							</em>
+						</p>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html.twig" %}
+{% form_theme form _self %}
+{% block body %}
+
+	<div class="row justify-content-between">
+		<h3 class="my-3 col-8 text-center">Paiement</h3>
+		<div class="col-8 bg-light rounded-4 gx-5 py-3 mb-auto">
+			<h4 class="mb-3">1. Options de livraison</h4>
+			{{ form_start(form, {"attr": {"novalidate":"novalidate"}, 'action': path('purchase_confirm') }) }}
+			<div class="row">
+				<div class="col-sm">
+					{{form_row(form.firstName)}}
+				</div>
+				<div class="col-sm-6">
+					{{form_row(form.lastName)}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					{{form_row(form.address, {"attr": {rows:1}})}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					{{form_row(form.postalCode)}}
+				</div>
+				<div class="col-sm">
+					{{form_row(form.city)}}
+				</div>
+				<div class="col-sm-5">
+					{{form_row(form.phone)}}
+				</div>
+			</div>
+			<button type="submit" class="btn btn-success rounded-4 float-end">Valider</button>
+			{{form_end(form) }}
+		</div>
+		<div class="col-3 bg-light rounded-4 gx-5">
+			<div class="my-3">
+				<div class="d-flex align-items-center justify-content-between">
+					<h4>Votre panier</h4>
+					<a href="#" class="">Modifier</a>
+				</div>
+				<div class="row justify-content-between">
+					<p class="col-6">Sous-total</p>
+					<p class="col text-end">0 €</p>
+				</div>
+				<div class="row justify-content-between">
+					<p class="col-6">Frais d'expéditions estimés</p>
+					<p class="col text-end">0 €</p>
+				</div>
+				<div class="d-flex justify-content-between align-items-baseline">
+					<h4>Total</h4>
+					<p class="">{{cartService.getTotal}}
+						€</p>
+				</div>
+			</div>
+			{% for item in cartService.getDetailedCartItems %}
+				<div class="row mb-3">
+					<div class="col-6">
+						<img src="{{item.item.mainPicture}}" alt="image produit" class="img-fluid">
+					</div>
+					<div class="col">
+						<h6>{{item.item.name}}</h6>
+						<p class="mb-0">{{item.item.description|u.truncate(8, '...', false)}}</p>
+						<p class="mb-0">taille : M</p>
+						<p class="mb-0">Quantité :
+							{{item.qty}}</p>
+						<p class="mb-0">{{item.item.price * item.qty}}
+							€</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block form_row %}
+	<div class="form-group mb-3">
+		{{ form_label(form,'' , {'label_attr': {'class': 'mb-0 ps-2'} }) }}
+		{{ form_widget(form, {'attr': {'class': 'form-control rounded-4'} }) }}
+		{{ form_help(form) }}
+		{{ form_errors(form) }}
+	</div>
+{% endblock %}

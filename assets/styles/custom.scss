@@ -1,0 +1,32 @@
+$secondary: #1b233a;
+$info: #c1d0e3;
+$primary: #a8c5ff;
+$light: #e0eaf1;
+$link-decoration: none !default;
+
+@font-face {
+    font-family: "Mukta Malar";
+    src: url("../fonts/muktaMalar/MuktaMalar-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Mukta Malar Bold";
+    src: url("../fonts/muktaMalar/MuktaMalar-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Mukta Malar SemiBold";
+    src: url("../fonts/muktaMalar/MuktaMalar-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+$font-family-base: "Mukta Malar";
+$headings-font-family: "Mukta Malar SemiBold";
+
+$hr-color: #333 !default;
+$hr-opacity: 0.5 !default;
+$hr-height: 2px !default;

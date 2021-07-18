@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index Administrateur
+{% endblock %}
+
+{% block body %}
+	<nav>
+		<ul>
+			<li>
+				<a class="" href="{{path('product_index')}}">Produits</a>
+			</li>
+			<li>
+				<a class="" href="{{path('service_index')}}">Services</a>
+			</li>
+			{# <li><a class=""href="{{path('product_index')}}">Catégorie services</a></li> #}
+			{# <li><a class=""href="{{path('product_index')}}">Produits</a></li> #}
+		</ul>
+	</nav>
+{% endblock %}

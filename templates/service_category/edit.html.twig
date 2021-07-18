@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer
+	{{service_category.name}}
+{% endblock %}
+
+{% block body %}
+	<h3>Éditer
+		{{service_category.name}}</h3>
+	{{ include('service_category/_form.html.twig', {edit:true}) }}
+	<p class="my-2">
+		{{ include('_btn/_btn-back.html.twig', {path:'service_category_index'}) }}
+	</p>
+{% endblock %}

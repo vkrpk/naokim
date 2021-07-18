@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-7">
+			<h3 class="my-5">Mon panier</h3>
+			{% if items|length > 0 %}
+				{% for key, item in items %}
+					<div class="row">
+						<div class="col-auto" style="width:200px">
+							<img src="https://picsum.photos/400/400?image=562" alt="Image du produit" class="img-fluid d-block rounded">
+						</div>
+						<div class="col gx-5">
+							<div class="d-flex justify-content-between fs-2">
+								<p>{{item.item.name}}</p>
+								<p>{{item.item.price * item.qty}}</p>
+							</div>
+							<p>
+								{{ "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero repellendus ratione ipsam sapiente eaque expedita perspiciatis corrupti omnis magni optio nesciunt nam illo ducimus consectetur facere consequuntur dolore, in temporibus velit exercitationem. Pariatur quia incidunt, vitae, corporis provident modi hic maxime adipisci ex esse quis. Commodi, quaerat eos. Voluptatum, sint."|u.truncate(100, '...', false) }}
+							</p>
+							<div class="d-flex justify-content-between">
+								<p>Taile : M</p>
+								<p>{{item.qty}}
+									<a href="{{path('cart_delete', {'id': item.item.id, 'table': item.item.entity})}}" class="btn btn-sm btn-danger">
+										<i class="bi bi-trash me-1"></i>Supprimer</a>
+									<a href="{{ path('cart_add', {'id': item.item.id, 'table': item.item.entity}) }}" class="btn btn-sm btn-link">
+										<i class="bi bi-plus-square"></i>
+									</a>
+									<i class="fas fa-chevron-down"></i>
+									<a href="{{ path('cart_decrement', {'id': item.item.id, 'table': item.item.entity}) }}" class="btn btn-sm btn-link">
+										<i class="bi bi-dash-square"></i>
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<hr>
+				{% endfor %}
+			{% else %}
+				<h6>Le panier est vide</h6>
+			{% endif %}
+		</div>
+		<div class="col-4 gx-5">
+			<h3 class="mt-5 mb-2">Récapitulatif</h3>
+			<div class="my-3">
+				<div class="d-flex justify-content-between">
+					<p>Sous-total</p>
+					<p>{{total}}</p>
+				</div>
+				<div class="row justify-content-between">
+					<p class="col-6">Frais estimés de prises en charges et d'expédition</p>
+					<p class="col text-end">0 €</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row justify-content-between">
+				<h4 class="col-6">Total</h4>
+				<h4 class="col text-end">{{total}}</h4>
+			</div>
+			<hr>
+			<div class="d-flex justify-content-center">
+				<a href="{{ path('purchase_confirm') }}" class="btn btn-light rounded-pill h3 px-5 mb-5">Paiement</a>
+			</div>
+			<div class="d-flex flex-column">
+				<a href="#" class="h6">BESOIN D'AIDE ?</a>
+				<a href="#">Livraison</a>
+				<a href="#">Retour et remboursement</a>
+				<a href="#">Commande et paiement</a>
+				<a href="#">Promotions et codes de réduction</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

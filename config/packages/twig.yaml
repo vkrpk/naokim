@@ -1,0 +1,19 @@
+twig:
+    default_path: "%kernel.project_dir%/templates"
+    form_themes: ["bootstrap_5_layout.html.twig"]
+    strict_variables: true
+    globals:
+        app_environement: '%env(APP_ENV)%'
+        stripe_public_key_dev: '%env(STRIPE_PUBLIC_KEY_DEV)%'
+        stripe_public_key_prod: '%env(STRIPE_PUBLIC_KEY_PROD)%'
+        links:
+            home: Accueil
+            product_all: Produits
+            service_all: Services
+        links_list_group:
+            product_index: Produits
+            service_index: Services
+            product_category_index: Catégories produits
+            service_category_index: Catégories services
+        testProductRepository: "@App\\Repository\\ProductRepository"
+        cartService: "@App\\Cart\\CartService"

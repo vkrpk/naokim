@@ -1,0 +1,31 @@
+{{ form_start(formView, {"attr": {"novalidate":"novalidate"}}) }}
+<div class="row" style="max-width:1000px">
+	<div class="row">
+		<div class="col-6">
+			{{ form_row(formView.name, {'attr': {'class': 'col-3 d-block'}}) }}
+			{{ form_row(formView.category) }}
+			{{ form_row(formView.status) }}
+		</div>
+		<div class="col-6">
+			{{ form_label(formView.date, 'Date', {'label_attr': {'class': 'pt-0'}}) }}
+			{{ form_row(formView.date, {'attr': {'style': 'max-width:300px;padding-top:0'}}) }}
+			{{ form_row(formView.price, {'attr': {'style': 'max-width:100px'}}) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			{{ form_row(formView.mainPicture) }}
+			{% if formView.vars.value.mainPicture is not empty %}
+				<img src="{{formView.vars.value.mainPicture}}" alt="image produit" class="img-fluid" style="max-width:200px">
+			{% endif %}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			{{ form_row(formView.description) }}
+		</div>
+	</div>
+</div>
+{{include('_btn/_btn-save.html.twig')}}
+{{ edit|default(false) == true ? include('service/_delete_form.html.twig')}}
+{{ form_end(formView) }}

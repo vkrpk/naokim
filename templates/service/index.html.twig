@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index services
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex my-4">
+		<h3 class="m-0">Index services</h3>
+		<div class="ms-3">
+			{{ include("_btn/_btn-new.html.twig", {path: 'service_new'}) }}
+		</div>
+
+	</div>
+
+	<table class="table table-responsive table-bordered text-center table-sm align-middle">
+		<thead>
+			<tr>
+				<th class="text-nowrap">Id</th>
+				<th class="text-nowrap">Nom</th>
+				<th class="text-nowrap">Prix</th>
+				<th class="text-nowrap">Description</th>
+				<th class="text-nowrap">Date</th>
+				<th class="text-nowrap">Statut</th>
+				<th class="text-nowrap">Photo principale</th>
+				<th class="text-nowrap">Catégorie</th>
+				<th class="text-nowrap">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for service in services %}
+				<tr>
+					<td class="text-nowrap">{{ service.id }}</td>
+					<td class="text-nowrap">{{ service.name }}</td>
+					<td class="text-nowrap">{{ service.price / 100}}
+						€</td>
+					<td style="min-width: 300px">{{ service.description }}</td>
+					<td class="text-nowrap">{{ service.date ? service.date|date('d-m-Y') : '' }}</td>
+					<td>{{ service.status ? '<i class="bi bi-check-lg text-green"></i>' : '<i class="bi bi-x-lg text-red"></i>' }}</td>
+					<td><img src="{{ service.mainPicture }}" alt="Image du service" style="max-width:75px;" class="img-fluid"></td>
+					<td class="text-nowrap">{{service.category.name}}</td>
+					<td>
+						<p>{% include('_btn/_btn-link.html.twig') with {path:'service_show', params:{'category_slug': service.category.slug, 'slug': service.slug}} %}</p>
+						<p>{% include('_btn/_btn-edit.html.twig') with {path:'service_edit', params:{'id': service.id}} %}</p>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">Aucun enrigistrement trouvé</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="mt-4">
+		{{ include("_btn/_btn-new.html.twig", {path: 'service_new'}) }}
+	</div>
+{% endblock %}

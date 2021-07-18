@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une nouvelle catégorie pour les services
+{% endblock %}
+
+{% block body %}
+	<h3>Créer une nouvelle catégorie pour les services</h3>
+	{{ include('service_category/_form.html.twig') }}
+	<p class="my-2">
+		{{ include('_btn/_btn-back.html.twig', {path:'service_category_index'}) }}
+	</p>
+{% endblock %}

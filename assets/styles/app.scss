@@ -1,0 +1,12 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+ul{
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.rounded-4{
+    border-radius: 10px;
+}

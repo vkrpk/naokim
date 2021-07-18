@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer
+	{{product.name}}
+{% endblock %}
+
+{% block body %}
+	<h3>Éditer
+		{{product.name}}
+		(id:
+		{{product.id}})</h3>
+	{{ include('product/_form.html.twig', {edit:true}) }}
+	<p class="my-2">
+		{{ include('_btn/_btn-back.html.twig', {path:'product_index'}) }}
+	</p>
+{% endblock %}

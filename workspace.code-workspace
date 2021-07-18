@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"name": "WEB",
+			"path": "..\\..\\..\\Users\\l'immortel\\Desktop\\WEB"
+		},
+		{
+			"name": "Site Statique",
+			"path": "..\\..\\..\\Users\\l'immortel\\Desktop\\Site Statique"
+		},
+		{
+			"name": "OwlCarousel2",
+			"path": "..\\..\\..\\Users\\l'immortel\\Desktop\\WEB\\jquery\\js\\OwlCarousel2"
+		},
+		{
+			"path": "..\\ifocop\\php"
+		},
+		{
+			"path": "..\\ifocop\\ecommerce"
+		},
+		{
+			"path": "..\\ifocop\\Ajax"
+		},
+		{
+			"path": "..\\ifocop\\phpTP"
+		},
+		{
+			"path": "..\\wordpress-studio"
+		},
+		{
+			"path": "..\\wordpressTP"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Site Statique"
+	}
+}

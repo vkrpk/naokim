@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+
+	{{ parent() }}
+
+	{{ encore_entry_link_tags('filter') }}
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+	{{ parent() }}
+
+	{{ encore_entry_script_tags('filter') }}
+
+{% endblock %}
+
+
+{% block title %}
+	Catégorie :
+	{{ category.name }}
+{% endblock %}
+
+{% block body %}
+	<h1 class="">Catégorie :
+		{{category.name}}</h1>
+	<div class="row">
+		{% for service in category.services %}
+			<div class="col-auto d-flex g-4">
+				<div class="card position-relative border-0" style="width: 18rem;">
+					<img src="{{service.mainpicture}}" class="card-img-top rounded-3" alt="Image service">
+					<div class="card-body d-flex flex-column">
+						<a class="h6" href="{{path('service_show', {'category_slug': service.category.slug, 'slug': service.slug})}}">{{service.name}}</a>
+						<p class="card-text mb-0">{{service.description|u.truncate(100, '...')}}</p>
+						<p class="fw-bold ">{{service.price / 100}}&euro;</p>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% set navLinkClasses = "nav-link link-white nav-link-classes" %}
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="navbar.css">
+{% endblock %}
+<header class="bg-secondary navbar py-3">
+	<nav class=" w-100 d-flex justify-content-between align-items-center container">
+		<div class="w-30 d-flex">
+			<a class="navbar-brand ps-0 {{ navLinkClasses }}" href="{{path('home')}}">LOGO</a>
+		</div>
+		<div class="w-30 d-flex">
+			<form class="d-flex input-group">
+				<input type="search" class="form-control border-0 rounded-pill" placeholder="Rechercher un produit" aria-label="search" style="width: 250px;">
+				<button type="submit" class="input-group-text text-secondary bg-transparent border-0 rounded-pill" style="position: absolute; right: 0;">
+					<i class="bi bi-search"></i>
+				</button>
+			</form>
+		</div>
+		<div class="w-30 d-flex">
+			<ul class="d-flex">
+				<li class="nav-item">
+					<a href="{{path('product_all')}}" class="{{ navLinkClasses }}">Produits</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('service_all')}}" class="{{ navLinkClasses }}">Services</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('cart_show')}}" class="{{ navLinkClasses }}">
+						<i class="bi bi-cart me-1"></i>
+						{{cartService.detailedCartItems|length > 0 ? cartService.detailedCartItems|length }}
+					</a>
+				</li>
+				{% if app.user %}
+					<li class="nav-item">
+						<a href="{{ path('purchase_index') }}" class="{{ navLinkClasses }}">Mes commandes</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{path('app_logout')}}" class="{{ navLinkClasses }}">Déconnexion</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a href="{{path('app_login')}}" class="{{ navLinkClasses }}">Me connecter</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+
+	</nav>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+	<div class="container">
+		<a class="navbar-brand" href="{{path('home')}}">LOGO</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a href="{{path('product_all')}}" class="{{ navLinkClasses }}">Produits</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('service_all')}}" class="{{ navLinkClasses }}">Services</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('cart_show')}}" class="{{ navLinkClasses }}">
+						<i class="bi bi-cart me-1"></i>
+						{{cartService.detailedCartItems|length > 0 ? cartService.detailedCartItems|length }}
+					</a>
+				</li>
+				{% if app.user %}
+					<li class="nav-item">
+						<a href="{{ path('purchase_index') }}" class="{{ navLinkClasses }}">Mes commandes</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{path('app_logout')}}" class="{{ navLinkClasses }}">Déconnexion</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a href="{{path('app_login')}}" class="{{ navLinkClasses }}">Me connecter</a>
+					</li>
+				{% endif %}
+			</ul>
+			<form class="d-flex input-group" style="width: 250px">
+				<input class="form-control border-0 rounded-pill" type="search" placeholder="Search" aria-label="Search">
+				<button class="input-group-text rounded-pill border-0 bg-transparent position-absolute end-0" type="submit">
+					<i class="bi bi-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+</nav>
+<div id="side-bar">
+	<div class="toggle-button" id="toggle-button">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	<ul>
+		<li>Home</li>
+		<li>About</li>
+		<li>Services</li>
+		<li>Contact</li>
+	</ul>
+</div>
+
+<section class="content">
+	<h1>Sidebar is life</h1>
+</section>
+<script src="/navbar.js"></script>

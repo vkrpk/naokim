@@ -1,0 +1,15 @@
+.carousel-indicators button[type=button] {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+.collection-card img {
+    margin-bottom: 10px;
+}
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-inner,
+.img-fluid {
+    border-radius: 10px;
+    overflow: hidden;
+}

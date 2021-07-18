@@ -1,0 +1,63 @@
+{% block stylesheets %}
+	{{ encore_entry_link_tags('footer') }}
+{% endblock %}
+{% set links_coqpix = ['Offres', 'Aide','À propos','Fonctionnalités' ]%}
+{% set links_legal = ['Mentions légales',"Conditions générales d'utilisation",'Cookies' ]%}
+{% set address = ['Pays, ville, adresse',"Numéro",'Mail' ]%}
+
+<footer class="footer bg-secondary py-4 mt-auto">
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-primary">Coqpix</h5>
+				<ul>
+					{% for links in links_coqpix  %}
+						<li>
+							<a href="#">{{links}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-primary">Contacts</h5>
+				<ul>
+					{% for line in address %}
+						<li>
+							<p class="mb-0">
+								{{line}}
+							</p>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-primary">Newsletter</h5>
+				<ul>
+					<li>
+						<div class="form-outline form-white input-group mb-4" style="width:80%">
+							<input type="email" id="form5Example2" class="form-control rounded-pill" placeholder="Email"/>
+							<button type="submit" class="input-group-text rounded-pill bg-primary text-white" style="position: absolute; right: 0;">
+								<i class="bi bi-chevron-right"></i>
+							</button>
+						</div>
+					</li>
+					<li>
+						<a class="bi bi-facebook" href="#!" role="button"></a>
+						<a class="bi bi-twitter" href="#!" role="button"></a>
+						<a class="bi bi-instagram" href="#!" role="button"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-primary">Légal</h5>
+				<ul>
+					{% for links in links_legal  %}
+						<li>
+							<a class="text-nowrap" href="#">{{links}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>

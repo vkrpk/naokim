@@ -1,0 +1,7 @@
+<div style="max-width:500px">
+	{{ form_start(form, {"attr": {"novalidate":"novalidate"}}) }}
+	{{ form_widget(form) }}
+	{{include('_btn/_btn-save.html.twig')}}
+	{{ edit|default(false) == true ? include('service_category/_delete_form.html.twig')}}
+	{{ form_end(form) }}
+</div>

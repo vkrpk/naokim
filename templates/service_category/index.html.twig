@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index catégories services
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex my-4">
+		<h3 class="m-0">Index catégories services</h3>
+		<div class="ms-3">
+			{{ include("_btn/_btn-new.html.twig", {path: 'service_category_new'}) }}
+		</div>
+	</div>
+	<table class="table table-responsive table-bordered text-center table-sm align-middle" style="max-width:500px">
+		<thead>
+			<tr>
+				<th class="text-nowrap">Id</th>
+				<th class="text-nowrap">Nom</th>
+				<th class="text-nowrap">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in service_categories %}
+				<tr>
+					<td class="text-nowrap">{{ category.id }}</td>
+					<td class="text-nowrap-xl">{{ category.name }}</td>
+					<td class="d-flex align-items-center justify-content-evenly">
+						<span>{% include('_btn/_btn-link.html.twig') with {path:'service_category', params:{'slug': category.slug}} %}</span>
+						<span>{% include('_btn/_btn-edit.html.twig') with {path:'service_category_edit', params:{'id': category.id}} %}</span>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">Aucun enrigistrement trouvé</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
