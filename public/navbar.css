@@ -1,11 +1,75 @@
-/* @media all and (min-width: 992px) {
-    #bars{
-        display: none;
-    }
-  } */
-
-.content {
-    color: #09FBBA;
-    transition: 1s;
-    height: 100vh;
+body{
+    overflow-x: hidden;
 }
+#side-bar{
+    position: absolute;
+    width: 310px;
+    height: 100%;
+    transition: .5s ease-out;
+    z-index: 5;
+    right: -310px;
+}
+
+.toggle-button {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 326px;
+}
+
+.toggle-button span {
+    width: 50px;
+    height: 6px;
+    border-radius: 5px;
+    background: #fff;
+    display: block;
+    transition: 0.5s ease;
+}
+
+.toggle-button span:nth-child(1) {
+    margin-bottom: 5px;
+}
+
+.toggle-button span:nth-child(2) {
+    margin-bottom: 5px;
+}
+
+#header.active #side-bar {
+    right: 0;
+}
+#header.active span {
+    position: absolute;
+    width: 25px;
+    top: -3px;
+    margin-bottom: 0;
+    float: right;
+    left: 25px;
+}
+#header.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+#header.active span:nth-child(2) {
+    opacity: 0;
+}
+#header.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+#header.active ~ #content {
+    opacity: 0.5;
+    transition: .5s ease;
+}
+#content{
+    transition: .5s ease;
+}
+
+@media all and (max-width: 991px) {
+    #navbar-lg div:nth-child(1n+2){
+        display: none !important;
+    }
+  }
+  @media all and (min-width: 992px) {
+    #toggle-button{
+        display: none !important;
+    }
+  }
