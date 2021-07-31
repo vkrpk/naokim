@@ -9,7 +9,9 @@ body{
     z-index: 5;
     right: -310px;
 }
-
+#side-bar form {
+    width: 250px;
+}
 .toggle-button {
     position: absolute;
     cursor: pointer;
@@ -43,7 +45,6 @@ body{
     width: 25px;
     top: -3px;
     margin-bottom: 0;
-    float: right;
     left: 25px;
 }
 #header.active span:nth-child(1) {
@@ -59,17 +60,31 @@ body{
     opacity: 0.5;
     transition: .5s ease;
 }
+#header.active #navbar-lg {
+    opacity: 0.5;
+    transition: .5s ease;
+}
 #content{
     transition: .5s ease;
 }
-
 @media all and (max-width: 991px) {
     #navbar-lg div:nth-child(1n+2){
         display: none !important;
     }
-  }
-  @media all and (min-width: 992px) {
+}
+@media all and (min-width: 992px) {
     #toggle-button{
         display: none !important;
     }
-  }
+}
+@media all and (max-width: 575px) {
+    #side-bar{
+        width: 200px;
+    }
+    #header.active span {
+       display: none;
+    }
+    #side-bar form {
+        width: 200px;
+    }
+}

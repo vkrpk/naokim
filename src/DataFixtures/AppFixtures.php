@@ -10,7 +10,6 @@ use App\Entity\Purchase;
 use App\Entity\PurchaseItem;
 use App\Entity\ProductCategory;
 use App\Entity\ServiceCategory;
-use App\Entity\PurchaseDeliveryAddress;
 use Bluemmb\Faker\PicsumPhotosProvider;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -112,25 +111,17 @@ class AppFixtures extends Fixture
         }
 
         for ($p=0; $p < mt_rand(25, 35); $p++) {
-            $deliveryAddress = new PurchaseDeliveryAddress();
-            $deliveryAddress
-                ->setFirstName($faker->firstName())
-                ->setLastName($faker->lastName())
-                ->setAddress($faker->streetAddress())
-                ->setPostalCode((string)$faker->postcode())
-                ->setCity($faker->city())
-                ->setPhone($faker->phoneNumber())
-                ->setUser($this->getReference("user-".rand(0,4)))
-                ;
-            $this->addReference("deliveryAddress-" . $p, $deliveryAddress);
-            $manager->persist($deliveryAddress);
-
             $purchase = new Purchase;
             $purchase
+                ->setFirstName($faker->firstName())
+                ->setLastName($faker->lastName())
+                ->setAddress($faker->address())
                 ->setReference(uniqid('', false))
+                ->setPostalCode($faker->postcode())
+                ->setCity($faker->city())
+                ->setPhone($faker->phoneNumber())
                 ->setTotal(mt_rand(2000, 30000))
                 ->setPurchasedAt($faker->dateTimeBetween('-6 months'))
-                ->setDeliveryAddress($this->getReference("deliveryAddress-" . $p))
                 ->setUser($this->getReference("user-".rand(0,4)));
 
             $selectedProducts = $faker->randomElements($products, mt_rand(2, 3));
