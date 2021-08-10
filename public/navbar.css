@@ -1,13 +1,22 @@
 body{
     overflow-x: hidden;
 }
-#side-bar{
+#header{
+    position: relative;
+}
+#navbar-lg li:last-child a {
+    padding-right: 0;
+}
+#side-bar {
     position: absolute;
     width: 310px;
     height: 100%;
     transition: .5s ease-out;
     z-index: 5;
     right: -310px;
+}
+#menu {
+    display: none;
 }
 #side-bar form {
     width: 250px;
@@ -36,7 +45,12 @@ body{
 .toggle-button span:nth-child(2) {
     margin-bottom: 5px;
 }
-
+#header.active #menu {
+    display: inherit;
+}
+#header.active {
+    position: initial !important;
+}
 #header.active #side-bar {
     right: 0;
 }
@@ -56,7 +70,7 @@ body{
 #header.active span:nth-child(3) {
     transform: rotate(-45deg);
 }
-#header.active ~ #content {
+#nav.active ~ #content{
     opacity: 0.5;
     transition: .5s ease;
 }
@@ -64,7 +78,7 @@ body{
     opacity: 0.5;
     transition: .5s ease;
 }
-#content{
+#content {
     transition: .5s ease;
 }
 @media all and (max-width: 991px) {
@@ -86,5 +100,8 @@ body{
     }
     #side-bar form {
         width: 200px;
+    }
+    #header.active .toggle-button {
+        right: 200px;
     }
 }
