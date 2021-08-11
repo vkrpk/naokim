@@ -95,7 +95,7 @@ class AppFixtures extends Fixture
             for ($s = 0; $s < $numberOfServices; $s++) {
                 $service = new Service();
                 $service
-                    ->setName("Service numéro ". ($s + $totalOfnumberOfServices))
+                    ->setName("Service numéro ". str_pad(($s + $totalOfnumberOfServices), 2, "0", STR_PAD_LEFT))
                     ->setSlug(strtolower($this->slugger->slug($service->getName())))
                     ->setDate($faker->dateTimeBetween($startDate = '-30 days', $endDate = 'now', $timezone = 'Europe/Paris'))
                     ->setStatus(Service::STATUS_AVAILABLE)

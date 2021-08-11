@@ -1,8 +1,4 @@
-<div class="col-lg-3 " style="float:left">
-	<div class="card collection-card border-0 m-0">
-		<div>
-			<img src="{{i.mainPicture}}" class="img-fluid rounded" style="height: 250px; width: 200px;" alt=""><br>
-			<caption>{{i.name}}</caption>
-		</div>
-	</div>
+<div style="max-width: 186px" class="mx-md-2 mx-xl-0">
+	<img src="{{i.mainPicture}}" class="img-fluid rounded-4 d-block" style="" alt="image"><br>
+	<p class="d-none d-sm-block">{{i.name|u.truncate(17, '')}}</p>
 </div>

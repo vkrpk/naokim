@@ -17,3 +17,4 @@ twig:
             service_category_index: Catégories services
         testProductRepository: "@App\\Repository\\ProductRepository"
         cartService: "@App\\Cart\\CartService"
+        colors: [white, yellow, red, blue, green]

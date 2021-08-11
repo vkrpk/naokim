@@ -1,22 +1,22 @@
 <div id="{{name}}" class="carousel slide" data-bs-ride="carousel">
 	<div class="carousel-indicators">
 		{% for i in items %}
-			<button type="button" data-bs-target="#{{name}}" data-bs-slide-to="{{ loop.index0 }}" class="{{ loop.first ? 'active' }}"></button>
+			<button type="button" data-bs-target="#{{name}}" data-bs-slide-to="{{ loop.index0 }}" class="{{ loop.first ? 'active' }} carousel-indicator-size"></button>
 		{% endfor %}
 	</div>
 	<div class="carousel-inner" style="border-radius: 0 0 10px 10px">
 		{% for i in items %}
 			<div class="carousel-item {{ loop.first ? 'active' }}" style="border-radius: 0 0 10px 10px;">
-				<img src="{{ i.mainPicture }}" class="d-block img-fluid" alt="image" style="height:{{height}}px; border-radius: 0 0 10px 10px; object-fit: cover;  ">
+				<img src="{{ i.mainPicture }}" class="img-fluid" alt="image" style="border-radius: 0 0 10px 10px; object-fit: contain;">
 			</div>
 		{% endfor %}
 	</div>
 	<button class="carousel-control-prev" type="button" data-bs-target="#{{name}}" data-bs-slide="prev" style="border-radius: 0 0 10px 10px">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="carousel-control-prev-icon carousel-control-size" aria-hidden="true"></span>
 		<span class="visually-hidden">Previous</span>
 	</button>
 	<button class="carousel-control-next" type="button" data-bs-target="#{{name}}" data-bs-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="carousel-control-next-icon carousel-control-size" aria-hidden="true"></span>
 		<span class="visually-hidden">Next</span>
 	</button>
 </div>

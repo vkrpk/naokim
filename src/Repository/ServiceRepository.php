@@ -19,6 +19,18 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
 
+    public function findByName(string $name): array
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->orderBy('s.name', 'ASC');
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
     // /**
     //  * @return Service[] Returns an array of Service objects
     //  */

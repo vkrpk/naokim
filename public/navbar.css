@@ -14,6 +14,7 @@ body{
     transition: .5s ease-out;
     z-index: 5;
     right: -310px;
+    display: none;
 }
 #menu {
     display: none;

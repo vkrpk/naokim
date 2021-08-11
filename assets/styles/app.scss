@@ -10,3 +10,14 @@ ul{
 .rounded-4{
     border-radius: 10px;
 }
+
+@media all and(max-width: 767px) {
+    .carousel-control-size {
+        width: 1rem !important;
+        height: 1rem !important;
+    }
+    .carousel-indicator-size{
+        width: 5px !important;
+        height: 5px !important;
+    }
+}

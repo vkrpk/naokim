@@ -5,16 +5,16 @@
 {% endblock %}
 {% block body %}
 	{% set sidePictures = ['https://picsum.photos/id/47/420/221', 'https://picsum.photos/id/62/420/221'] %}
-	<div class="mb-3">
-		{{ include('shared/_mainCarousel.html.twig', {items: pictures, name: 'mainCarousel', height:400}) }}
+	<div class="mb-3 vh-50">
+		{{ include('shared/_mainCarousel.html.twig', {items: pictures, name: 'mainCarousel'}) }}
 	</div>
 	<div class="row">
 		<div class="col-8">
-			<img src="https://picsum.photos/seed/picsum/856/450" class="img-fluid" alt="picture" style="height:450px;">
+			<img src="https://picsum.photos/seed/picsum/856/450" class="img-fluid" alt="picture" style="object-fit: contain;">
 		</div>
 		<div class="col-4 d-flex flex-column justify-content-between">
 			{% for picture in sidePictures %}
-				<img src="{{picture}}" class="img-fluid" alt="image" style="height:219px; width: 100%;">
+				<img src="{{picture}}" class="img-fluid" alt="image" style="object-fit: contain;">
 			{% endfor %}
 		</div>
 	</div>
