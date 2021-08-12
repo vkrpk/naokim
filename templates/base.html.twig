@@ -16,9 +16,9 @@
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 	</head>
-	<body class="d-flex flex-column h-100">
+	<body class="d-flex flex-column vh-100">
 		{% include "shared/navbar/_navbar.html.twig"%}
-		<div class="container" id="content">
+		<div class="container " id="content" style="flex: 1 0 auto;">
 			{% for rubrique, messages in app.flashes %}
 				<div class="alert alert-{{rubrique}}">
 					{% for message in messages %}
@@ -30,7 +30,7 @@
 		</div>
 		{% include "shared/_footer.html.twig"%}
 		{% block javascripts %}
-			<script src="/navbar.js"></script>
+			{# // <script src="{{asset('navbar.js')}}"></script> #}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</body>

@@ -82,6 +82,9 @@ body{
 #content {
     transition: .5s ease;
 }
+.input-group > .form-control:focus, .input-group > .form-select:focus {
+    z-index: 0;
+}
 @media all and (max-width: 991px) {
     #navbar-lg div:nth-child(1n+2){
         display: none !important;
