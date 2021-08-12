@@ -12,14 +12,14 @@
 {% endblock %}
 {% block body %}
 	<h3>Les produits</h3>
-	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+	<div class="" id="div-card">
 		{% for product in products %}
-			<div class="d-flex g-4">
+			<div class="me-3" id="img-card">
 				<div class="card position-relative border-0">
 					<img src="{{product.mainpicture}}" class="card-img-top rounded-3" alt="Image du produit">
 					<div class="card-body d-flex flex-column">
 						<a class="h5" href="{{path('product_show', {'category_slug': product.category.slug, 'slug': product.slug})}}">{{product.name}}</a>
-						<div class="btn-group btn-group-toggle btn-color-group d-block mt-n2 ml-n22">
+						<div class="btn-group d-block mt-n2">
 							{% for color in colors %}
 								<span class="btn rounded-circle p-2 me-2 my-2 bg-{{color}} {{color == 'white'? 'rounded-circle border-gray'}}"></span>
 							{% endfor %}
@@ -37,4 +37,3 @@
 		{% endfor %}
 	</div>
 {% endblock %}
-{# style="width: 18rem;" #}
