@@ -102,4 +102,9 @@ class ServiceCategory
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return "service-category";
+    }
 }

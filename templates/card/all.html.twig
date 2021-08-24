@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('filter') }}
+	<link rel="stylesheet" href="{{asset('card-grid.css')}}">
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags('filter') }}
+{% endblock %}
+{% block title %}
+	{{title}}
+{% endblock %}
+{% block body %}
+	{% set table = app.request.pathinfo %}
+	{% if results|length > 0  %}
+		<h3 class="my-3 text-center">
+			{% if "category" in table %}
+				Catégorie :
+			{% endif %}
+			{{title}}</h3>
+		<div id="div-card">
+			{% for result in results %}
+				<div class="me-3" id="img-card">
+					<div class="card position-relative border-0">
+						<img src="{{result.mainpicture}}" class="card-img-top rounded-3" alt="Image du produit">
+						<div class="card-body d-flex flex-column">
+							<a class="h5 fs-6 text-truncate" href="{{path(result.__toString ~ '_show', {'category_slug': result.category.slug, 'slug': result.slug})}}">{{result.name}}</a>
+							{% if "product" in result.__toString  %}
+								{{include('card/_circle-colors.html.twig')}}
+							{% endif %}
+							<p class="card-text mb-0">{{result.description|u.truncate(100, '...')}}</p>
+							<p class="fw-bold mb-0">{{result.price / 100}}&euro;</p>
+							<p>
+								<em>
+									<a href="{{path(result.__toString ~ '_category_all', {'slug': result.category.slug})}}">{{result.category.name}}</a>
+								</em>
+							</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<p class="my-3">Aucun résultat trouvé.</p>
+	{% endif %}
+{% endblock %}

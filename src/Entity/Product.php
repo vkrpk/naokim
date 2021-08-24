@@ -20,6 +20,11 @@ class Product
     public const STATUS_AVAILABLE = 'En stock';
     public const STATUS_UNAVAILABLE = 'Indisponible';
 
+    public function __toString()
+    {
+        return "product";
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

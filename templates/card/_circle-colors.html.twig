@@ -1,0 +1,5 @@
+<div class="btn-group d-block mt-n2">
+	{% for color in colors %}
+		<span class="btn rounded-circle p-1 p-lg-2 me-2 my-2 bg-{{color}} {{color == 'white'? 'rounded-circle border-gray'}}"></span>
+	{% endfor %}
+</div>

@@ -20,6 +20,11 @@ class Service
     public const STATUS_AVAILABLE = 'Disponible';
     public const STATUS_UNAVAILABLE = 'Indisponible';
 
+    public function __toString()
+    {
+        return "service";
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

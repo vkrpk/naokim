@@ -15,19 +15,20 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProductCategoryController extends AbstractController
 {
      /**
-     * @Route("/product-category/{slug}", name="product_category_show", methods={"GET"})
+     * @Route("/product-category/{slug}", name="product_category_all", methods={"GET"})
      */
-    public function show($slug, ProductCategoryRepository $productCategoryRepository)
+    public function all($slug, ProductCategoryRepository $productCategoryRepository)
     {
         $category = $productCategoryRepository->findOneBy(['slug' => $slug]);
         if (!$category) {
             $this->createNotFoundException("La catégorie demandée n'existe pas");
         }
-        $colors = ['white', 'yellow', 'red', 'blue', 'green'];
+dd($category->__toString());
 
-        return $this->render('product_category/show.html.twig', [
-            'category' => $category,
-            'colors'   => $colors]);
+        return $this->render('card/all.html.twig', [
+            "results" => $category->getProducts(),
+            "title" => $category->getName(),
+        ]);
     }
 
     /**

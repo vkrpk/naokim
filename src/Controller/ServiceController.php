@@ -32,8 +32,9 @@ class ServiceController extends AbstractController
     public function all(ServiceRepository $serviceRepository): Response
     {
         $services = $serviceRepository->findAll();
-        return $this->render('service/all.html.twig', [
-            "services" => $services,
+        return $this->render('card/all.html.twig', [
+            "results" => $services,
+            "title" => "Les services",
         ]);
     }
 
@@ -106,8 +107,9 @@ class ServiceController extends AbstractController
         if (!$service || !$category) {
             throw new NotFoundHttpException('Le produit demandé n\'existe pas');
         }
-        return $this->render("service/show.html.twig", [
-            'service' => $service,
+        return $this->render("card/show.html.twig", [
+            'result' => $service,
+            "title" => $service->getName(),
         ]);
     }
 

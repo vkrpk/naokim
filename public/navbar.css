@@ -107,16 +107,3 @@ body{
     }
 }
 
-#div-card{
-    display: flex;
-    flex-wrap: wrap;
-}
-#img-card{
-    width: 150px;
-    flex: 1 0 auto;
-}
-@media all and (min-width:992px) {
-    #img-card {
-        flex: 1 0 calc(100% * (1/4) - 16px);
-    }
-}

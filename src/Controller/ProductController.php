@@ -18,6 +18,34 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProductController extends AbstractController
 {
     /**
+     * @Route("/product/all", name="product_all", methods={"GET"})
+     */
+    public function all(ProductRepository $productRepository): Response
+    {
+        $products = $productRepository->findAll();
+        return $this->render('card/all.html.twig', [
+            "results" => $products,
+            "title" => "Les produits",
+        ]);
+    }
+
+    /**
+     * @Route("/product/{category_slug}/{slug}", name="product_show", methods={"GET"})
+     */
+    public function show($slug, ProductRepository $productRepository, ProductCategoryRepository $productCategoryRepository, $category_slug)
+    {
+        $product = $productRepository->findOneBy(['slug' => $slug]);
+        $category = $productCategoryRepository->findOneBy(['slug' => $category_slug]);
+        if (!$product || !$category) {
+            throw new NotFoundHttpException('Le produit demandé n\'existe pas');
+        }
+        return $this->render("card/show.html.twig", [
+            'result' => $product,
+            "title" => $product->getName(),
+        ]);
+    }
+
+    /**
      * @Route("/admin/product/index", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
@@ -25,19 +53,6 @@ class ProductController extends AbstractController
         $products = $productRepository->findAll();
         return $this->render('product/index.html.twig', [
             "products" => $products,
-        ]);
-    }
-
-    /**
-     * @Route("/product/all", name="product_all", methods={"GET"})
-     */
-    public function all(ProductRepository $productRepository): Response
-    {
-        $products = $productRepository->findAll();
-        $colors = ['white', 'yellow', 'red', 'blue', 'green'];
-        return $this->render('product/all.html.twig', [
-            "products" => $products,
-            'colors'   => $colors,
         ]);
     }
 
@@ -61,23 +76,6 @@ class ProductController extends AbstractController
 
         return $this->render('product/new.html.twig', [
             'formView' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/product/{category_slug}/{slug}", name="product_show", methods={"GET"})
-     */
-    public function show($slug, ProductRepository $productRepository, ProductCategoryRepository $productCategoryRepository, $category_slug)
-    {
-        $product = $productRepository->findOneBy(['slug' => $slug]);
-        $category = $productCategoryRepository->findOneBy(['slug' => $category_slug]);
-        $colors = ['white', 'yellow', 'red', 'blue', 'green'];
-        if (!$product || !$category) {
-            throw new NotFoundHttpException('Le produit demandé n\'existe pas');
-        }
-        return $this->render("product/show.html.twig", [
-            'product' => $product,
-            'colors'  => $colors,
         ]);
     }
 
@@ -117,5 +115,4 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('product_index');
     }
-
 }

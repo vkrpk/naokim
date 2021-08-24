@@ -9,11 +9,11 @@
 	{% if results|length > 0  %}
 		<div class="row">
 			{% for result in results %}
-				{{ include("card/card.html.twig") }}
+				{{ include("card/all.html.twig") }}
 			{% endfor %}
 		</div>
 	{% else %}
-		<p>Aucun résultat trouvé.</p>
+		<p class="my-3">Aucun résultat trouvé.</p>
 	{% endif %}
 
 {% endblock %}

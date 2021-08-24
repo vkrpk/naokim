@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\Service;
+use App\Repository\ProductCategoryRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,15 +19,16 @@ class NavbarController extends AbstractController
      */
     public function search_bar(Request $request, EntityManagerInterface $em): Response
     {
-        $submittedToken = $request->query->get( '_csrf_token' );
-        $query = $request->query->get('q');
+        $submittedToken = $request->request->get( '_csrf_token' );
+        $query = $request->request->get('q');
         if(!empty($query) && $this->isCsrfTokenValid('token-name', $submittedToken)) {
             $products = $this->getDoctrine()->getRepository(Product::class)->findByName($query);
             $services = $this->getDoctrine()->getRepository(Service::class)->findByName($query);
             $results = array_merge($products, $services);
 
-            return $this->render('search_bar/index.html.twig', [
+            return $this->render('card/all.html.twig', [
                 'results' => $results,
+                'title' => 'Recherche : ' . $query
             ]);
         }
         $referer = $request->headers->get('referer');

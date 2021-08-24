@@ -25,17 +25,18 @@ class ServiceCategoryController extends AbstractController
     }
 
      /**
-     * @Route("/service-category/{slug}", name="service_category_show", methods={"GET"})
+     * @Route("/service-category/{slug}", name="service_category_all", methods={"GET"})
      */
-    public function show($slug, ServiceCategoryRepository $serviceCategoryRepository): Response
+    public function all($slug, ServiceCategoryRepository $serviceCategoryRepository): Response
     {
         $category = $serviceCategoryRepository->findOneBy(['slug' => $slug]);
         if (!$category) {
             $this->createNotFoundException("La catégorie demandée n'existe pas");
         }
 
-        return $this->render('service_category/show.html.twig', [
-            'category' => $category,
+        return $this->render("card/all.html.twig", [
+            'results' => $category->getServices(),
+            "title" => $category->getName(),
         ]);
     }
 

@@ -105,6 +105,6 @@ class ProductCategory
 
     public function __toString()
     {
-        return $this->name;
+        return "product-category";
     }
 }
