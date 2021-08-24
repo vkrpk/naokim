@@ -1,12 +1,7 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
 	{{ parent() }}
-	{{ encore_entry_link_tags('filter') }}
 	<link rel="stylesheet" href="{{asset('card-grid.css')}}">
-{% endblock %}
-{% block javascripts %}
-	{{ parent() }}
-	{{ encore_entry_script_tags('filter') }}
 {% endblock %}
 {% block title %}
 	{{title}}

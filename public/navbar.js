@@ -5,7 +5,14 @@ const searchInput = document.getElementById("search-input");
 const closeButton = document.getElementById("close-button");
 const nav = document.getElementById("nav");
 
+function show() {
+    header.classList.toggle("active");
+    nav.classList.toggle("active");
+    changePlaceholder();
+}
+
 toggleButton.addEventListener("click", show);
+
 function changePlaceholder() {
     if (window.innerWidth < 576) {
         searchInput.placeholder = "Recherchez..";
@@ -13,15 +20,10 @@ function changePlaceholder() {
         searchInput.placeholder = "Recherchez un produit..";
     }
 }
+
 function positionTheCross() {
     positionCloseButton = closeButton.getBoundingClientRect().right;
     toggleButton.style.right = positionCloseButton;
-}
-
-function show() {
-    header.classList.toggle("active");
-    nav.classList.toggle("active");
-    changePlaceholder();
 }
 
 const content = document.getElementById("content");

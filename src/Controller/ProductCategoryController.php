@@ -23,7 +23,6 @@ class ProductCategoryController extends AbstractController
         if (!$category) {
             $this->createNotFoundException("La catégorie demandée n'existe pas");
         }
-dd($category->__toString());
 
         return $this->render('card/all.html.twig', [
             "results" => $category->getProducts(),

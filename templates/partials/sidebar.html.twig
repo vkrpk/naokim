@@ -1,0 +1,62 @@
+<div class="main_box">
+	<div class="sidebar_menu bg-secondary">
+		<div class="logo">
+			<a href="#">logo</a>
+		</div>
+		<div class="menu">
+			<ul>
+				<li>
+					<a href="{{ path('product_all') }}">
+						<i class="fas fa-store"></i>Produits</a>
+				</li>
+				<li>
+					<a href="{{ path('service_all') }}">
+						<i class="fas fa-sliders-h"></i>Services</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fas fa-phone-volume"></i>Contact</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fas fa-question-circle"></i>À propos</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fas fa-comments"></i>Retours d'informations</a>
+				</li>
+				<li>
+					<a href="{{ path('cart_show') }}">
+						<i class="fas fa-shopping-cart"></i>
+						{{ cartService.detailedCartItems|length > 0 ? cartService.detailedCartItems|length }}
+					</a>
+				</li>
+				{% if app.user %}
+					<li>
+						<a href="#">
+							<i class="fas fa-user"></i>Profil</a>
+					</li>
+					<li>
+						<a href="{{ path('app_logout') }}">Déconnexion</a>
+					</li>
+				{% else %}
+					<li>
+						<a href="{{ path('app_login') }}">
+							<i class="fas fa-sign-in-alt"></i>Me connecter</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="social_media">
+			<a href="#">
+				<i class="fab fa-facebook-f"></i>
+			</a>
+			<a href="#">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a href="#">
+				<i class="fab fa-instagram"></i>
+			</a>
+		</div>
+	</div>
+</div>

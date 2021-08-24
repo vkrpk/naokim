@@ -13,11 +13,14 @@
 			{% endif %}
 		</title>
 		{% block stylesheets %}
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+			<link rel="stylesheet" href="{{ asset('sidebar.css') }}">
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 	</head>
 	<body class="d-flex flex-column vh-100">
-		{% include "shared/navbar/_navbar.html.twig"%}
+		{{sidebar()}}
+		{# {% include "shared/navbar/_navbar.html.twig"%} #}
 		<div class="container " id="content" style="flex: 1 0 auto;">
 			{% for rubrique, messages in app.flashes %}
 				<div class="alert alert-{{rubrique}}">
