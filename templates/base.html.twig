@@ -17,10 +17,12 @@
 		{% endblock %}
 		<link rel="stylesheet" href="{{ asset('sidebar.css') }}">
 	</head>
-	<body class="d-flex flex-column vh-100">
-		{{sidebar()}}
-		{# {% include "shared/navbar/_navbar.html.twig"%} #}
-		<div class="container " id="content" style="flex: 1 0 auto;">
+	<body
+		class="d-flex flex-column vh-100">
+		{# {{ navbar() }} #}
+		{% include "shared/navbar/_navbar.html.twig"%}
+		{{ sidebar() }}
+		<div class="container" id="content" style="flex: 1 0 auto;">
 			{% for rubrique, messages in app.flashes %}
 				<div class="alert alert-{{rubrique}}">
 					{% for message in messages %}

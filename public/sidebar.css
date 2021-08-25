@@ -137,3 +137,8 @@
     opacity: 1;
 }
 
+.sidebar_menu form input {
+    height: 30px !important;
+    padding: auto .75rem !important;
+    max-width: 200px;
+}

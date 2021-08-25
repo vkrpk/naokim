@@ -1,6 +1,25 @@
 body{
     overflow-x: hidden;
 }
+
+.wide_bar {
+    height: 60px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    width: 100%;
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 #header{
     position: relative;
 }
@@ -11,10 +30,10 @@ body{
     transition: .5s ease-out;
     z-index: 5;
     right: -310px;
-    /* display: none; */
+    display: none;
 }
 #menu {
-    /* display: none; */
+    display: none;
 }
 #side-bar form {
     width: 250px;
@@ -78,6 +97,7 @@ body{
 }
 #content {
     transition: .5s ease;
+    margin-top: 60px;
 }
 .input-group > .form-control:focus, .input-group > .form-select:focus {
     z-index: 0;
@@ -107,3 +127,14 @@ body{
     }
 }
 
+/* .nav {
+    position: fixed;
+    height: 60px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    width: 100%;
+    display: flex;
+}
+
+#content {
+    margin-top: 60px;
+} */

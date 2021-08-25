@@ -3,8 +3,8 @@
     flex-wrap: wrap;
 }
 #img-card{
-    width: 150px;
-    flex: 0 0 auto;
+    width: 110px;
+    flex: 0 0 calc(100% * (1/2) - 16px);
 }
 @media all and (min-width:768px) {
     #img-card {

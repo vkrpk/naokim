@@ -2,7 +2,6 @@
 
 namespace App\Twig;
 
-use App\Repository\ProductCategoryRepository;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Twig\Environment;
@@ -17,19 +16,13 @@ class SidebarExtension extends AbstractExtension
     protected $twig;
 
     /**
-     * @var ProductCategoryRepository
-     */
-    protected $productCategoryRepository;
-
-    /**
      * @var CacheInterface
      */
     protected $cache;
 
-    public function __construct(Environment $twig, ProductCategoryRepository $productCategoryRepository, CacheInterface $cache)
+    public function __construct(Environment $twig, CacheInterface $cache)
     {
         $this->twig = $twig;
-        $this->productCategoryRepository = $productCategoryRepository;
         $this->cache = $cache;
     }
 
@@ -51,9 +44,6 @@ class SidebarExtension extends AbstractExtension
 
     private function renderSidebar(): string
     {
-        $categories = $this->productCategoryRepository->findAll();
-        return $this->twig->render('partials/sidebar.html.twig', [
-            'categories' => $categories
-        ]);
+        return $this->twig->render('partials/sidebar.html.twig', []);
     }
 }
