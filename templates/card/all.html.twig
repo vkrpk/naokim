@@ -18,7 +18,7 @@
 			{% for result in results %}
 				<div class="me-3" id="img-card">
 					<div class="card position-relative border-0">
-						<img src="{{result.mainpicture}}" class="card-img-top rounded-3" alt="Image du produit">
+						<img src="{{result.mainpicture}}" class="card-img-top rounded-4" alt="Image du produit">
 						<div class="card-body d-flex flex-column">
 							<a class="h5 fs-6 text-truncate" href="{{path(result.__toString ~ '_show', {'category_slug': result.category.slug, 'slug': result.slug})}}">{{result.name}}</a>
 							{% if "product" in result.__toString  %}
