@@ -1,0 +1,24 @@
+{% if app.user %}
+	<li>
+		<a href="#">
+			<i class="fas fa-user"></i>Profil
+		</a>
+	</li>
+	<li>
+		<a href="{{ path('app_logout') }}">
+			<i class="fas fa-sign-out-alt"></i>Déconnexion
+		</a>
+	</li>
+{% else %}
+	<li>
+		<a href="{{ path('app_login') }}">
+			<i class="fas fa-sign-in-alt"></i>Me connecter
+		</a>
+	</li>
+{% endif %}
+<li>
+	<a href="{{ path('cart_show') }}">
+		<i class="fas fa-shopping-cart"></i>Panier
+		{{ cartService.detailedCartItems|length > 0 ? cartService.detailedCartItems|length }}
+	</a>
+</li>

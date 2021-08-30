@@ -11,7 +11,7 @@
     width: 280px;
     left: -280px;
     z-index: 2;
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    /* box-shadow: 0 0 6px rgba(255, 255, 255, 0.5); */
     overflow: hidden;
     transition: all 0.3s linear;
 }
@@ -87,11 +87,10 @@
 }
 
 .main_box .btn_one i {
-    color: red;
+    color: #fff;
     font-size: 30px;
     font-weight: 700;
     position: absolute;
-    left: 16px;
     line-height: 60px;
     cursor: pointer;
     opacity: 1;
@@ -127,6 +126,8 @@
 
 #check:checked ~ .sidebar_menu {
     left: 0px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+
 }
 
 #check:checked ~ .btn_one i {
@@ -141,4 +142,20 @@
     height: 30px !important;
     padding: auto .75rem !important;
     max-width: 200px;
+}
+
+@media all and (min-width: 1200px) {
+    .main_box {
+        display: none !important;
+    }
+}
+
+.bar {
+    height: 60px;
+    position: absolute;
+    width: 100%;
+}
+
+.main_box section {
+    position: relative;
 }

@@ -1,12 +1,53 @@
-body{
-    overflow-x: hidden;
+.wide_bar {
+    position: absolute;
+    width: 100%;
+    display: none;
+    z-index: 3;
+    transition: all 0.3s linear;
 }
 
-.wide_bar {
-    height: 60px;
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
-    width: 100%;
+.wide_bar ul {
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.wide_bar li {
+    padding: 14px 20px;
+    transition: all 0.3s linear;
+    height: 60px;
+}
+
+.wide_bar i {
+    color: #fff;
+    font-size: 20px;
+    padding-right: 8px;
+}
+
+.wide_bar a {
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.wide_bar form input {
+    height: 30px !important;
+    padding: auto .75rem !important;
+    max-width: 200px;
+}
+
+.wide_bar li:hover {
+    box-shadow: -10px 0 8px -8px rgb(255 255 255 / 50%), 10px 0 8px -8px rgb(255 255 255 / 50%);
+}
+
+.wide_bar li:nth-child(2) {
+    margin: 0 auto;
+}
+
+@media all and (min-width: 1200px) {
+    .wide_bar {
+        display: flex !important;
+    }
 }
 
 

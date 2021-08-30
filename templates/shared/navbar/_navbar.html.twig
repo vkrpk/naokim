@@ -32,24 +32,24 @@
 													<li class="">
 														<a href="{{path('service_all')}}" class="{{ navLinkClasses }}">Services</a>
 													</li>
-													<li class="nav-item">
+													<li>
 														<a href="{{path('cart_show')}}" class="{{ navLinkClasses }} pb-0">
 															<i class="bi bi-cart me-1"></i>
 															{{cartService.detailedCartItems|length > 0 ? cartService.detailedCartItems|length }}
 														</a>
 													</li>
 													{% if app.user %}
-														<li class="nav-item">
+														<li>
 															<a href="{{ path('purchase_index') }}" class="{{ navLinkClasses }}">Mes commandes</a>
 														</li>
-														<li class="nav-item">
+														<li>
 															<a href="{{path('app_logout')}}" class="{{ navLinkClasses }}">Déconnexion</a>
 														</li>
 													{% else %}
-														<li class="nav-item">
+														<li>
 															<a href="{{path('app_login')}}" class="{{ navLinkClasses }}">Connexion</a>
 														</li>
-														<li class="nav-item">
+														<li>
 															<a href="{{path('app_login')}}" class="{{ navLinkClasses }}">Inscription</a>
 														</li>
 													{% endif %}
@@ -57,4 +57,15 @@
 											</div> #}
 {#</div>
 </header></div><nav class="nav bg-secondary"></nav> #}
-<div class="wide_bar bg-secondary"></div>
+<div class="wide_bar bg-secondary">
+	<ul class="container">
+		<li>
+			<a href="{{ path('home') }}">Shop</a>
+		</li>
+		<li>
+			{{ include('partials/_search_form.html.twig') }}
+		</li>
+		{{ include('partials/_links_services_products.html.twig') }}
+		{{ include('partials/_links_user.html.twig') }}
+	</ul>
+</div>

@@ -1,90 +1,56 @@
 <div class="main_box">
-	<input type="checkbox" id="check">
-	<div class="btn_one">
-		<label for="check">
-			<i class="fas fa-bars"></i>
-		</label>
-	</div>
-	<div class="sidebar_menu bg-secondary ">
-		<div class="logo">
-			<a href="{{ path('home') }}">logo</a>
-		</div>
-		<div class="btn_two">
+	<div class="bar bg-secondary"></div>
+	<section class="container">
+		<input type="checkbox" id="check">
+		<div class="btn_one">
 			<label for="check">
-				<i class="fas fa-times"></i>
+				<i class="fas fa-bars"></i>
 			</label>
 		</div>
-		<div class="menu">
-			<ul>
-				<li>
-					<form class="d-flex" action="{{ path('navbar_search_bar') }}" method="post">
-						<button type="hidden" class="bg-transparent border-0 d-flex align-items-center p-0">
-							<i class="fas fa-search"></i>
-						</button>
-						<input type="search" name="q" class="form-control border-0 rounded-pill" placeholder="Recherche" aria-label="search">
-						<input type="hidden" name="_csrf_token" value="{{ csrf_token('token-name') }}">
-					</form>
-				</li>
-				<li>
-					<a href="{{ path('product_all') }}">
-						<i class="fas fa-store"></i>Produits
-					</a>
-				</li>
-				<li>
-					<a href="{{ path('service_all') }}">
-						<i class="fas fa-sliders-h"></i>Services
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fas fa-phone-volume"></i>Contact
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fas fa-question-circle"></i>À propos
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fas fa-comments"></i>Retours d'expériences
-					</a>
-				</li>
-				{% if app.user %}
+		<div class="sidebar_menu bg-secondary">
+			<div class="logo">
+				<a href="{{ path('home') }}">Shop</a>
+			</div>
+			<div class="btn_two">
+				<label for="check">
+					<i class="fas fa-times"></i>
+				</label>
+			</div>
+			<div class="menu">
+				<ul>
+					<li>
+						{{ include('partials/_search_form.html.twig') }}
+					</li>
+					{{ include('partials/_links_services_products.html.twig') }}
 					<li>
 						<a href="#">
-							<i class="fas fa-user"></i>Profil
+							<i class="fas fa-phone-volume"></i>Contact
 						</a>
 					</li>
 					<li>
-						<a href="{{ path('app_logout') }}">Déconnexion
+						<a href="#">
+							<i class="fas fa-question-circle"></i>À propos
 						</a>
 					</li>
-				{% else %}
 					<li>
-						<a href="{{ path('app_login') }}">
-							<i class="fas fa-sign-in-alt"></i>Me connecter
+						<a href="#">
+							<i class="fas fa-comments"></i>Retours d'expériences
 						</a>
 					</li>
-				{% endif %}
-				<li>
-					<a href="{{ path('cart_show') }}">
-						<i class="fas fa-shopping-cart"></i>Panier
-						{{ cartService.detailedCartItems|length > 0 ? cartService.detailedCartItems|length }}
-					</a>
-				</li>
-			</ul>
+					{{ include('partials/_links_user.html.twig') }}
+				</ul>
+			</div>
+			<div class="social_media">
+				<a href="#">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="#">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="#">
+					<i class="fab fa-instagram"></i>
+				</a>
+			</div>
 		</div>
-		<div class="social_media">
-			<a href="#">
-				<i class="fab fa-facebook-f"></i>
-			</a>
-			<a href="#">
-				<i class="fab fa-twitter"></i>
-			</a>
-			<a href="#">
-				<i class="fab fa-instagram"></i>
-			</a>
-		</div>
-	</div>
+	</section>
 </div>
