@@ -1,0 +1,15 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('navbar.css')}}">
+{% endblock %}
+<div class="wide_bar bg-secondary">
+	<ul class="container">
+		<li>
+			<a href="{{ path('home') }}">Shop</a>
+		</li>
+		<li>
+			{{ include('partials/_search_form.html.twig') }}
+		</li>
+		{{ include('partials/_links_services_products.html.twig') }}
+		{{ include('partials/_links_user.html.twig') }}
+	</ul>
+</div>

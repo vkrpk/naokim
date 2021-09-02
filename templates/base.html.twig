@@ -15,26 +15,16 @@
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
-		<link rel="stylesheet" href="{{ asset('sidebar.css') }}">
 	</head>
-	<body
-		class="d-flex flex-column vh-100">
-		{# {{ navbar() }} #}
-		{% include "shared/navbar/_navbar.html.twig"%}
+	<body class="d-flex flex-column vh-100">
 		{{ sidebar() }}
-		<div class="container" id="content" style="flex: 1 0 auto;">
-			{% for rubrique, messages in app.flashes %}
-				<div class="alert alert-{{rubrique}}">
-					{% for message in messages %}
-						<span>{{message}}</span>
-					{% endfor %}
-				</div>
-			{% endfor %}
+		{{ navbar() }}
+		<div class="container" id="content" style="flex: 1 0 auto; margin-top:60px;">
+			{{ include("partials/_flashes.html.twig") }}
 			{% block body %}{% endblock %}
 		</div>
 		{% include "shared/_footer.html.twig"%}
 		{% block javascripts %}
-			{# // <script src="{{asset('navbar.js')}}"></script> #}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</body>

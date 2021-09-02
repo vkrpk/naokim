@@ -29,20 +29,19 @@ class SidebarExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('sidebar', [$this, 'getSidebar'], ['is_safe' => ['html']])
+            new TwigFunction('sidebar', [$this, 'renderSidebar'], ['is_safe' => ['html']])
         ];
     }
 
-    public function getSidebar(): string
-    {
-        // return $this->cache->get('sidebar', function (ItemInterface $item) {
-            // $item->expiresAfter(3600);
-            // $item->tag(['comments', 'posts']);
-            return $this->renderSidebar();
-        // });
-    }
+    // public function getSidebar(): string
+    // {
+    //     return $this->cache->get('sidebar', function (ItemInterface $item) {
+    //         $item->expiresAfter(3600);
+    //         return $this->renderSidebar();
+    //     });
+    // }
 
-    private function renderSidebar(): string
+    public function renderSidebar(): string
     {
         return $this->twig->render('partials/sidebar.html.twig', []);
     }

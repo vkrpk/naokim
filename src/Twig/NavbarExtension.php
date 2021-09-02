@@ -26,25 +26,24 @@ class NavbarExtension extends AbstractExtension
         $this->cache = $cache;
     }
 
-    // public function getFunctions(): array
-    // {
-    //     return [
-    //         new TwigFunction('navbar', [$this, 'getNavbar'], ['is_safe' => ['html']])
-    //     ];
-    // }
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('navbar', [$this, 'renderNavbar'], ['is_safe' => ['html']])
+        ];
+    }
 
     // public function getNavbar(): string
     // {
-    //     // return $this->cache->get('sidebar', function (ItemInterface $item) {
-    //         // $item->expiresAfter(3600);
-    //         // $item->tag(['comments', 'posts']);
+    //     return $this->cache->get('sidebar', function (ItemInterface $item) {
+    //         $item->expiresAfter(3600);
     //         return $this->renderNavbar();
-    //     // });
+    //     });
     // }
 
-    // private function renderNavbar(): string
-    // {
-    //     return $this->twig->render('partials/navbar.html.twig', []);
+    public function renderNavbar(): string
+    {
+        return $this->twig->render('partials/navbar.html.twig', []);
 
-    // }
+    }
 }

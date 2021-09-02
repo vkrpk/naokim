@@ -10,10 +10,19 @@
     height: 100vh;
     width: 280px;
     left: -280px;
-    z-index: 2;
-    /* box-shadow: 0 0 6px rgba(255, 255, 255, 0.5); */
+    z-index: 3;
     overflow: hidden;
     transition: all 0.3s linear;
+}
+
+.bar {
+    height: 60px;
+    position: absolute;
+    width: 100%;
+}
+
+.main_box section {
+    position: relative;
 }
 
 .sidebar_menu .logo {
@@ -150,12 +159,3 @@
     }
 }
 
-.bar {
-    height: 60px;
-    position: absolute;
-    width: 100%;
-}
-
-.main_box section {
-    position: relative;
-}
