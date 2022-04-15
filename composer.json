@@ -33,7 +33,6 @@
     "symfony/mime": "5.3.*",
     "symfony/monolog-bundle": "^3.1",
     "symfony/notifier": "5.3.*",
-    "symfony/orm-pack": "^2.1",
     "symfony/process": "5.3.*",
     "symfony/property-access": "5.3.*",
     "symfony/property-info": "5.3.*",
@@ -69,7 +68,11 @@
     "preferred-install": {
       "*": "dist"
     },
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "symfony/flex": true,
+      "symfony/runtime": true
+    }
   },
   "autoload": {
     "psr-4": {
