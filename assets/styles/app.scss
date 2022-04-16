@@ -1,28 +1,28 @@
-@import "custom";
-@import "~bootstrap/scss/bootstrap";
+@import 'custom';
+@import '~bootstrap/scss/bootstrap';
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
-ul{
-    list-style: none;
-    margin-bottom: 0;
-    padding-left: 0;
+ul {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
-.rounded-4{
-    border-radius: 10px;
+.rounded-4 {
+  border-radius: 10px;
 }
 
 @media all and(max-width: 767px) {
-    .carousel-control-size {
-        width: 1rem !important;
-        height: 1rem !important;
-    }
-    .carousel-indicator-size{
-        width: 5px !important;
-        height: 5px !important;
-    }
+  .carousel-control-size {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  .carousel-indicator-size {
+    width: 5px !important;
+    height: 5px !important;
+  }
 }
