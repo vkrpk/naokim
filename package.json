@@ -13,7 +13,8 @@
     "dev-server": "encore dev-server",
     "dev": "encore dev",
     "build": "encore production --progress",
-    "heroku-postbuild": "encore production --progress"
+    "heroku-postbuild": "encore production --progress",
+    "postinstall": "encore production --progress"
   },
   "engines": {
     "node": "16.14.0",
