@@ -6,12 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface
 {
     /**
@@ -20,55 +22,45 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
-
     /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
-
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $pseudo;
-
     /**
      * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user")
      */
     private $purchases;
-
     public function __construct()
     {
         $this->purchases = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getEmail(): ?string
     {
         return $this->email;
     }
-
     public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -78,7 +70,6 @@ class User implements UserInterface
     {
         return (string) $this->email;
     }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -88,7 +79,6 @@ class User implements UserInterface
     {
         return (string) $this->email;
     }
-
     /**
      * @see UserInterface
      */
@@ -100,14 +90,12 @@ class User implements UserInterface
 
         return array_unique($roles);
     }
-
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
         return $this;
     }
-
     /**
      * @see PasswordAuthenticatedUserInterface
      */
@@ -115,14 +103,12 @@ class User implements UserInterface
     {
         return $this->password;
     }
-
     public function setPassword(string $password): self
     {
         $this->password = $password;
 
         return $this;
     }
-
     /**
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
@@ -133,7 +119,6 @@ class User implements UserInterface
     {
         return null;
     }
-
     /**
      * @see UserInterface
      */
@@ -142,19 +127,16 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
     public function getPseudo(): ?string
     {
         return $this->pseudo;
     }
-
     public function setPseudo(string $pseudo): self
     {
         $this->pseudo = $pseudo;
 
         return $this;
     }
-
     /**
      * @return Collection|Purchase[]
      */
@@ -162,7 +144,6 @@ class User implements UserInterface
     {
         return $this->purchases;
     }
-
     public function addPurchase(Purchase $purchase): self
     {
         if (!$this->purchases->contains($purchase)) {
@@ -172,7 +153,6 @@ class User implements UserInterface
 
         return $this;
     }
-
     public function removePurchase(Purchase $purchase): self
     {
         if ($this->purchases->removeElement($purchase)) {
