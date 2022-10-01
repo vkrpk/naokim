@@ -25,7 +25,7 @@ Lancer le serveur
 symfony serve
 ```
 
-Créer une nouvelle branche
+Créer une nouvelle branche de travail
 
 ```sh
 git checkout -b your_branch
