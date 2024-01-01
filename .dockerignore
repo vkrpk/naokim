@@ -1,0 +1,50 @@
+# Git files
+.git
+.gitignore
+
+# Node.js
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Symfony specific
+/vendor
+/var/*
+!/var/cache
+!/var/logs
+!/var/sessions
+#.env
+.env.local
+.env.*.local
+.phpunit.result.cache
+
+# Various IDEs and editors
+.idea
+.vscode
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Other files
+.docker/
+.dockerignore
+Dockerfile
+README.md
+LICENSE
+*.md
+
+# Symfony cache and logs
+var/cache/*
+var/logs/*
+var/sessions/*
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+!var/sessions/.gitkeep
+
+# Other common directories
+#bin/
+tests/
+phpunit.xml.dist

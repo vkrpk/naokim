@@ -1,10 +1,44 @@
-version: '3'
+version: '3.8'
 
 services:
-  database:
-    image: postgres:13-alpine
-    environment:
-      POSTGRES_USER: main
-      POSTGRES_PASSWORD: main
-      POSTGRES_DB: main
-    ports: [5432]
+    traefik:
+        image: traefik:v2.9
+        command: --api.insecure=true --providers.docker
+        ports:
+            - "80:80"
+            - "8080:8080"
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.middlewares.redirect-to-http.redirectscheme.scheme=http"
+        volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock"
+    app:
+        labels:
+            - "traefik.http.routers.app.rule=Host(`app.localhost`)"
+        depends_on:
+            - traefik
+            - database
+        build:
+            dockerfile: Dockerfile
+            context: .
+        volumes:
+            - .:/var/www/html
+    database:
+        image: mysql
+        container_name: mysql
+        restart: always
+        command: --default-authentication-plugin=mysql_native_password
+        volumes:
+            - mysql:/var/lib/mysql
+        ports:
+            - "3311:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - "8083:8080"
+
+volumes:
+    mysql:

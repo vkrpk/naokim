@@ -20,8 +20,8 @@
     "postinstall": "encore production --progress"
   },
   "engines": {
-    "node": "16.14.0",
-    "npm": "8.3.1"
+    "node": "^16.14.0",
+    "npm": "^8.3.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",

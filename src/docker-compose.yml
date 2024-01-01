@@ -1,0 +1,36 @@
+services:
+  app:
+    image: ghcr.io/vkrpk/naokim_app:latest
+    depends_on:
+      - database
+    networks:
+      - internal
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.naokim.rule=Host(`naokim.victork.fr`)"
+      - "traefik.http.routers.naokim.tls=true"
+      - "traefik.http.routers.naokim.tls.certresolver=lets-encrypt"
+      - "traefik.port=80"
+    env_file:
+      - .env
+  database:
+    image: mysql
+    container_name: mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - internal
+
+volumes:
+  mysql:
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
