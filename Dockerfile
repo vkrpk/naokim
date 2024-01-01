@@ -35,3 +35,5 @@ RUN composer install --ignore-platform-reqs
 # Construisez votre application
 RUN npm run build
 
+RUN chown -R www-data:www-data var
+
